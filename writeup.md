@@ -150,10 +150,6 @@ Actual values can be obtained by assigning above DH parameter values and actual 
 
 #### 3. Decouple Inverse Kinematics problem into Inverse Position Kinematics and inverse Orientation Kinematics; doing so derive the equations to calculate all individual joint angles.
 
- ##### - Based on the geometric Inverse Kinematics method described here, breakdown the IK problem into Position and Orientation problems. 
- ##### - Derive the equations for individual joint angles. 
- ##### - Your writeup must contain details about the steps you took to arrive at those equations. Add figures where necessary. If any given joint has multiple solutions, select the best solution and provide explanation about your choice (Hint: Observe the active robot workspace in this project and the fact that some joints have physical limits).
-
 Since the last three joints in KR210 robot are revolute and their joint axes intersect at a single point, IK problem can be decoupled into Inverse Position and Inverse Orientation problems.
 
 ##### Step1: find the location of the wrist center relative to the base frame.
@@ -236,8 +232,6 @@ where, Rrpy = Homogeneous RPY rotation between base_link and gripper_link
 #### 1. Fill in the `IK_server.py` file with properly commented python code for calculating Inverse Kinematics based on previously performed Kinematic Analysis. Your code must guide the robot to successfully complete 8/10 pick and place cycles. Briefly discuss the code you implemented and your results. 
 
 we have equations describing all six joint variables, next we will turn our kinematic analysis into a ROS python node which will perform the Inverse Kinematics for the pick and place operation.
-
-Here I'll talk about the code, what techniques I used, what worked and why, where the implementation might fail and how I might improve it if I were going to pursue this project further.  
 
 My `IK_server.py` contains basically all the code that I explained above sections. Using the code, the robot can successfully complet pick and place cycles. My first attempt took much time to calculate IK process to find joint angles. Then, I moved processing which is needed only once to outside of trajectory calculation loop, and get faster. However, I think more speed up is needed further. 
 
